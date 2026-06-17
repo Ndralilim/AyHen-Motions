@@ -6,6 +6,7 @@
 <title>AH MOTIONS</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -19,112 +20,174 @@ color:white;
 }
 
 header{
+background:#161b22;
 padding:20px;
 text-align:center;
-background:#161b22;
 border-bottom:1px solid #30363d;
 }
 
 .logo{
-font-size:30px;
+font-size:32px;
 font-weight:bold;
 color:#00d4ff;
 }
 
-.hero{
-padding:40px 20px;
-text-align:center;
+.container{
+max-width:700px;
+margin:auto;
+padding:20px;
 }
 
-.hero h1{
-font-size:32px;
+.title{
+font-size:28px;
+font-weight:bold;
+text-align:center;
 margin-bottom:10px;
 }
 
-.hero p{
+.subtitle{
+text-align:center;
 color:#aaa;
-margin-bottom:25px;
-}
-
-.btn{
-display:inline-block;
-padding:15px 25px;
-background:#00d4ff;
-color:black;
-text-decoration:none;
-border-radius:12px;
-font-weight:bold;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:15px;
-padding:20px;
-max-width:700px;
-margin:auto;
+margin-bottom:30px;
 }
 
 .card{
 background:#161b22;
-padding:20px;
-border-radius:15px;
 border:1px solid #30363d;
+border-radius:15px;
+padding:20px;
+margin-bottom:20px;
 }
 
-.card h3{
-margin-top:10px;
-margin-bottom:10px;
+label{
+display:block;
+margin-bottom:8px;
+font-weight:bold;
 }
 
-.card p{
-font-size:14px;
+input,
+select,
+textarea{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border-radius:10px;
+border:1px solid #30363d;
+background:#0d1117;
+color:white;
+}
+
+textarea{
+height:120px;
+resize:none;
+}
+
+.generate-btn{
+width:100%;
+padding:15px;
+border:none;
+border-radius:12px;
+background:#00d4ff;
+color:black;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.generate-btn:hover{
+opacity:0.9;
+}
+
+.status{
+margin-top:15px;
+text-align:center;
 color:#aaa;
+}
+
+.history-item{
+background:#0d1117;
+padding:12px;
+border-radius:10px;
+margin-top:10px;
+border:1px solid #30363d;
 }
 
 footer{
 text-align:center;
 padding:20px;
 color:#777;
+margin-top:20px;
 }
-</style>
 
+</style>
 </head>
+
 <body>
 
 <header>
 <div class="logo">AH MOTIONS</div>
 </header>
 
-<section class="hero">
-<h1>AI Motion Prompt Generator</h1>
-<p>Buat prompt motion sinematik untuk Kling, Veo, Hailuo, Runway dan lainnya.</p>
+<div class="container">
 
-<a class="btn" href="https://jadiapa.com/register?ref=VC7NVXM6">
-🚀 Mulai Generate Motion
-</a>
-</section>
+<div class="title">
+🎬 Generate Motion
+</div>
 
-<div class="cards">
-
-<div class="card">
-<h3>🎬 Generate</h3>
-<p>Buat prompt motion otomatis.</p>
+<div class="subtitle">
+Upload foto dan video referensi lalu generate motion AI
 </div>
 
 <div class="card">
-<h3>🔥 Viral Prompt</h3>
-<p>Kumpulan prompt yang sedang trending.</p>
+
+<label>📷 Upload Image</label>
+<input type="file" accept="image/*">
+
+<label>🎥 Upload Reference Video</label>
+<input type="file" accept="video/*">
+
+<label>🤖 Pilih Model</label>
+<select>
+<option>Kling 2.1 Pro</option>
+<option>Kling 2.1 Standard</option>
+<option>Veo 3</option>
+<option>Hailuo</option>
+<option>Runway</option>
+</select>
+
+<label>⏱️ Durasi</label>
+<select>
+<option>5 Detik</option>
+<option>10 Detik</option>
+<option>15 Detik</option>
+<option>20 Detik</option>
+<option>30 Detik</option>
+</select>
+
+<label>📝 Prompt</label>
+<textarea placeholder="Contoh: Beautiful woman smiling naturally, cinematic lighting, realistic skin details..."></textarea>
+
+<label>🚫 Negative Prompt</label>
+<textarea placeholder="Blur, low quality, extra fingers, distortion..."></textarea>
+
+<button class="generate-btn" onclick="generateMotion()">
+🚀 Generate Motion
+</button>
+
+<div class="status" id="status">
+Siap untuk generate
+</div>
+
 </div>
 
 <div class="card">
+
 <h3>📜 History</h3>
-<p>Simpan hasil prompt sebelumnya.</p>
+
+<div class="history-item">
+Belum ada video yang dibuat
 </div>
 
-<div class="card">
-<h3>👥 Referral</h3>
-<p>Undang teman dan dapatkan bonus.</p>
 </div>
 
 </div>
@@ -132,6 +195,24 @@ color:#777;
 <footer>
 © 2026 AH MOTIONS
 </footer>
+
+<script>
+
+function generateMotion(){
+
+document.getElementById("status").innerHTML =
+"⏳ Generate sedang diproses...";
+
+setTimeout(function(){
+
+document.getElementById("status").innerHTML =
+"✅ Generate selesai (Demo UI)";
+
+},3000);
+
+}
+
+</script>
 
 </body>
 </html>
